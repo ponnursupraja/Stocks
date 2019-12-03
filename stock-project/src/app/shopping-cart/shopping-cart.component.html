@@ -1,0 +1,23 @@
+
+  <table style="width:100%" class="table table-hover table-dark" >
+    <thead class="thead-dark">
+      <tr>
+        <th scope="col">CompanyName</th>
+        <th scope="col" >Amount</th>
+        <th scope="col">Price</th>
+        <th scope="col">Select</th>
+      </tr>
+    </thead>
+    <tbody  *ngFor="let item of cartList;let i=index">
+        <tr>
+            <td contenteditable='true' #nameval >{{item.name}}</td>
+            <td contenteditable='true' #amountval >{{item.amount}}</td>
+            <td contenteditable='true' #priceval >{{item.price}}</td>
+            <td contenteditable='true' (click)="onSelect(i)"><input  type="checkbox"></td>
+            <td><button type="button" class="btn btn-danger btn-sm" (click)="onDelete(i)" >X</button></td>
+            <td><button type="button" class="btn btn-success" (click)="onSave(nameval,amountval,priceval,i)" >save</button></td>
+          </tr>
+    </tbody>
+  </table>
+
+<button type="submit" class="btn btn-success" (click)="onBuy()">Buy</button>

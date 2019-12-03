@@ -1,0 +1,28 @@
+<table  id="tableSortExample" mdbTable class="z-depth-1" >
+    <thead class="thead-dark">
+      <tr>
+        <!-- <th scope="col">Symbol</th>
+        <th scope="col">quantity</th>
+        <th scope="col">price</th>
+        <th scope="col" >date</th> -->
+        <th *ngFor="let head of headElements; let i = index" aria-controls="tableSortExample" scope="col" [mdbTableSort]="list" [sortBy]="headElements[i]">{{head | titlecase}}
+            <mdb-icon fas icon="sort"></mdb-icon>
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of list;let i=index">
+        <td scope="row">{{i}}</td>
+        <td>{{ item.symbol }}</td>
+        <td>{{ item.quantity}}</td>
+        <td>{{ item.price }}</td>
+        <!-- <td>{{ item.lastboughtdate }}</td> -->
+      </tr>
+    </tbody>
+  </table>
+
+
+
+
+
+

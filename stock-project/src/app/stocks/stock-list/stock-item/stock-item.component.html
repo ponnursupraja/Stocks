@@ -1,0 +1,13 @@
+<a [routerLink]=[index]
+routerLinkActive="active"
+style="cursor : pointer;" class="list-group-item clearfix" >
+  <div class="pull-left">
+    <h4 class="list-group-item-heading"><span  style=" color:darkviolet" >{{stock.symbol}}</span></h4>
+    <p class="list-group-item-text"><span  style=" color: red" >{{stock.price}}</span> $</p>
+  </div>
+  <span class="pull-right">
+      <h4 class="list-group-item-heading"> {{stock.name}}</h4>
+      <p class="list-group-item-text">Quantity : <span  style=" color: green" >{{stock.quantity}}</span></p>
+  </span>
+
+</a>
