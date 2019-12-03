@@ -22,11 +22,11 @@
 </form>
 
 
-<div class="row">
+<!-- <div class="row">
   <div class="col-xs-12">
     <h3>{{stock.name}}</h3>
   </div>
-</div>
+</div> -->
 
 
 <div class="row">
@@ -37,7 +37,7 @@
             <span class="glyphicon glyphicon-calendar"></span>
         </a>
         <p  *ngIf="open">
-            <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate'></ejs-calendar>
+            <ejs-calendar id=calendar [value]='value' [min]='minDate' [max]='maxDate' (change)="onValueChange($event)"></ejs-calendar>
         </p>
     </div>
 

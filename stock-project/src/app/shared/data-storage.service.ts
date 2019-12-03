@@ -63,18 +63,40 @@ export class DataStorageService{
   }
 
 
-  OnclickMonthTodate(){
+  OnclickMonthTodate(value : any){
+    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
+      params : new HttpParams().set('month',value)
+    })
+    .subscribe(response =>
+      {
+        this.phService.setDates(response);
+      }
+      )
+  }
+
+
+  OnClickYearTodate(value : any){
+    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
+      params : new HttpParams().set('month',value)
+    })
+    .subscribe(response =>
+      {
+        this.phService.setDates(response);
+      }
+      )
 
   }
 
 
-  OnClickYearTodate(){
-
-  }
-
-
-  onClickPast5years(){
-
+  onClickPast5years(value: any){
+    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
+      params : new HttpParams().set('month',value)
+    })
+    .subscribe(response =>
+      {
+        this.phService.setDates(response);
+      }
+      )
   }
 
 

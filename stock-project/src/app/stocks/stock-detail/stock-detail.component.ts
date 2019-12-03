@@ -8,6 +8,7 @@ import {DateModel } from '../../shared/date.model';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { PriceHistorySerivce } from '../price-history.service';
 import { Subscription } from 'rxjs';
+import { interval } from 'rxjs';
 
 @Component({
   selector: 'app-stock-detail',
@@ -21,9 +22,10 @@ export class StockDetailComponent implements OnInit{
  price : number;
  public dsubscription:Subscription;
  prices : DateModel[];
-//  public minDate: Date = new Date ("05/07/2017");
-//  public maxDate: Date = new Date ("08/27/2017");
-//  public value: Date = new Date ("05/16/2017");
+ public minDate: Date = new Date ("05/07/2009");
+ public maxDate: Date = new Date ("08/27/2020");
+ public value: Date = new Date ();
+
  open = false;
 
   constructor(private stockservice : StockService,private dsService :DataStorageService,
@@ -37,8 +39,6 @@ export class StockDetailComponent implements OnInit{
       (params : Params)=>{
         this.id= +params['id'];
         this.stock=this.stockservice.getStock(this.id);
-        // console.log("hey");
-        console.log(this.stock);
       }
     )
 
@@ -54,16 +54,15 @@ export class StockDetailComponent implements OnInit{
   }
 
   onBuyStockOneTime(){
-    console.log("enters");
     this.price =this.stock.price;
     // const CartItem = new Cart(this.stock.name,this.amount,new Date(),'oneTime',);
     this.stockservice.addStocksBoughtToCart(this.stock,this.amount,this.price);
-
-    console.log(this.stock);
   }
 
   onBuyStockRecur(){
-    this.stockservice.addStocksBoughtToCart(this.stock,this.amount,this.price);
+    interval(1000 * 60).subscribe(x => {
+      this.onBuyStockOneTime();
+    });
   }
 
   onCurrentDay(){
@@ -79,18 +78,22 @@ export class StockDetailComponent implements OnInit{
   }
 
   MonthTodate(){
-
+this.dsService.OnclickMonthTodate(this.value);
   }
 
   YearTodate(){
-
+this.dsService.OnClickYearTodate(this.value);
   }
 
   onPast5years(){
-
+this.dsService.onClickPast5years(this.value);
   }
 
 
+  onValueChange(args: any):void {
+    /*Displays selected date in the label*/
+    this.value =  new Date(args.value.toLocaleDateString());
+}
 
 
   display(){
@@ -103,5 +106,9 @@ export class StockDetailComponent implements OnInit{
     )
     // this.subscription.unsubscribe();
   }
+
+
+
+
 
 }
