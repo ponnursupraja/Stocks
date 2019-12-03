@@ -66,12 +66,28 @@ export class StockDetailComponent implements OnInit{
     this.stockservice.addStocksBoughtToCart(this.stock,this.amount,this.price);
   }
 
+  onCurrentDay(){
+    this.dsService.onClickCurrentDay(this.stock.symbol);
+  }
+
   onCurrentWeek(){
     this.dsService.onClickCurrentWeek(this.stock.symbol);
   }
 
   onPastWeek(){
     this.dsService.onClickpastWeek(this.stock.symbol);
+  }
+
+  MonthTodate(){
+
+  }
+
+  YearTodate(){
+
+  }
+
+  onPast5years(){
+
   }
 
 

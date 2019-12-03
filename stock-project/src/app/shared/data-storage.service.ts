@@ -24,6 +24,18 @@ export class DataStorageService{
       })
   }
 
+
+  onClickCurrentDay(symbol:string){
+    this.http.get<Date[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
+      params : new HttpParams().set('symbol',symbol)
+    })
+    .subscribe(response =>
+      {
+        this.phService.setDates(response);
+      }
+      )
+  }
+
   onClickCurrentWeek(symbol:string){
     console.log(symbol);
     this.http.get<Date[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
@@ -47,6 +59,21 @@ export class DataStorageService{
         this.phService.setDates(response);
       }
       )
+
+  }
+
+
+  OnclickMonthTodate(){
+
+  }
+
+
+  OnClickYearTodate(){
+
+  }
+
+
+  onClickPast5years(){
 
   }
 
