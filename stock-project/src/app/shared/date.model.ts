@@ -1,5 +1,5 @@
 
-export class Date{
+export class DateModel{
   public date : string;
   public price : string;
   constructor(date: string,price : string){

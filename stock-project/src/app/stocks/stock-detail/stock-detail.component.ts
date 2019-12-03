@@ -4,7 +4,7 @@ import { ActivatedRoute , Params, Router } from '@angular/router';
 import { StockService } from '../stocks.service';
 import {NgForm } from '@angular/forms';
 // import { Cart } from '/shared/cart.model;
-import {Date } from '../../shared/date.model';
+import {DateModel } from '../../shared/date.model';
 import { DataStorageService } from 'src/app/shared/data-storage.service';
 import { PriceHistorySerivce } from '../price-history.service';
 import { Subscription } from 'rxjs';
@@ -20,7 +20,7 @@ export class StockDetailComponent implements OnInit{
  amount :number;
  price : number;
  public dsubscription:Subscription;
- prices : Date[];
+ prices : DateModel[];
 //  public minDate: Date = new Date ("05/07/2017");
 //  public maxDate: Date = new Date ("08/27/2017");
 //  public value: Date = new Date ("05/16/2017");
@@ -96,7 +96,7 @@ export class StockDetailComponent implements OnInit{
   display(){
     this. prices=this.psHistory.getDates();
     this.dsubscription=this.psHistory.pricesListChanged.subscribe(
-      (values: Date[])=>
+      (values: DateModel[])=>
       {
         this.prices = values;
       }

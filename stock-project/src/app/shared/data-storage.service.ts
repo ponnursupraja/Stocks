@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Stock } from '../stocks/stock.model';
 import { StockService } from '../stocks/stocks.service';
-import {Date} from './date.model';
+import {DateModel} from './date.model';
 import { PriceHistorySerivce } from '../stocks/price-history.service';
 import { ShoppingCartService}  from '../shopping-cart/shopping-cart.service';
 import { SummaryService } from '../summary/summary.service';
@@ -26,7 +26,7 @@ export class DataStorageService{
 
 
   onClickCurrentDay(symbol:string){
-    this.http.get<Date[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
+    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
       params : new HttpParams().set('symbol',symbol)
     })
     .subscribe(response =>
@@ -38,7 +38,7 @@ export class DataStorageService{
 
   onClickCurrentWeek(symbol:string){
     console.log(symbol);
-    this.http.get<Date[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
+    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
       params : new HttpParams().set('symbol',symbol)
     })
     .subscribe(response =>
@@ -51,7 +51,7 @@ export class DataStorageService{
 
   onClickpastWeek(symbol : string){
 
-    this.http.get<Date[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
+    this.http.get<DateModel[]>('http://ec2-18-222-112-169.us-east-2.compute.amazonaws.com/companyStockHistory/currentWeek/symbol',{
       params : new HttpParams().set('symbol',symbol)
     })
     .subscribe(response =>

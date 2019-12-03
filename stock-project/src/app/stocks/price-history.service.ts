@@ -1,14 +1,14 @@
-import {Date } from '../shared/date.model';
+import {DateModel } from '../shared/date.model';
 import { Subject} from 'rxjs';
 
 
 export class PriceHistorySerivce{
 
-  private dates : Date[]=[
+  private dates : DateModel[]=[
 
   ]
 
-  pricesListChanged= new Subject<Date[]>();
+  pricesListChanged= new Subject<DateModel[]>();
 
   constructor(){
 
