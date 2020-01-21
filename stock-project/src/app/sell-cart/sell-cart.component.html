@@ -1,0 +1,19 @@
+
+<table style="width:100%" class="table table-hover table-dark" >
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">CompanyName</th>
+      <th scope="col" >Amount</th>
+      <th scope="col">Price</th>
+      <th scope="col">Select</th>
+    </tr>
+  </thead>
+  <tbody  *ngFor="let item of sellList;let i=index">
+      <tr>
+          <td >{{item.name}}</td>
+          <td>{{item.amount}}</td>
+          <td>{{item.price}}</td>
+          <td><button type="button" class="btn btn-success" >Sell</button></td>
+        </tr>
+  </tbody>
+</table>
